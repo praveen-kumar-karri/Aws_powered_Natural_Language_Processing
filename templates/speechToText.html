@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=width=1200px, initial-scale=1.0">
+    <title>Speech-to-Text Page</title>
+    <link rel="icon" href="{{url_for('static',filename='logo.png')}}" type="image/jpg"> 
+    <link rel="stylesheet" href="{{url_for('static',filename='speechToText.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <ul class = "nav">
+        <a href = "{{url_for('home')}}"><img src="{{url_for('static',filename='aws-nlp.png')}}" height="100px" width="375px" style="margin-top: -7px;"></a>
+        <div class="navbar">
+            <li class="navbar-item"><a href="{{url_for('home')}}" class="navRef"><b>Home</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('sentiment')}}" class="navRef"><b>Sentiment Analysis</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('textToSpeech')}}" class="navRef"><b>Text-to-Speech</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('imagetext')}}" class="navRef"><b>Image Text Extraction</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('chatbot')}}" class="navRef"><b>ChatBot</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('history')}}" class="navRef"><b>History</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('about')}}" class="navRef"><b>About Us</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('logout')}}" class="navRef"><b>Logout</b></a></li>
+        </div>
+    </ul>
+    <center>
+        <h1 style="font-weight: bolder;font-size: 50px; width: 700px;  padding: 5px;">Speech to Text Convertor</h1>
+        <form action="/speechToText" method="post"></form>
+            <div class="mainBox">
+                <audio id="audioElement" controls></audio><br><br>
+                <button id="startBtn">Start Recording</button>
+                <button id="stopBtn" type="submit" disabled>Stop Recording</button>
+            </div>
+        </form>
+        <h2 style="background-color: aliceblue; width: fit-content; padding: 5px; border-radius: 20px;">Note: Please wait while our application processes your audio.................It takes a while..........</h2> 
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <center class="regSucs">
+                            <b>{{ message }}</b>
+                        </center>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </center>
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        function startRecording() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.addEventListener('dataavailable', function(event) {
+                        if (event.data.size > 0) {
+                            audioChunks.push(event.data);
+                        }
+                    });
+                    mediaRecorder.addEventListener('stop', function() {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        const audioElement = document.getElementById('audioElement');
+                        audioElement.src = URL.createObjectURL(audioBlob);
+                        sendAudioToBackend(audioBlob);
+                    });
+                    mediaRecorder.start();
+                    document.getElementById('startBtn').disabled = true;
+                    document.getElementById('stopBtn').disabled = false;
+                })
+                .catch(function(err) {
+                    console.error('Error capturing audio:', err);
+                });
+        }
+
+        function stopRecording() {
+            mediaRecorder.stop();
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+        }
+
+        function sendAudioToBackend(audioBlob) {
+            const formData = new FormData();
+            formData.append('audioFile', audioBlob, 'recording.wav');
+            fetch('/speechToText', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error sending audio to backend:', error);
+            })
+            .finally(() => {
+                // Reload the page after sending audio to the backend
+                setTimeout(function(){
+                    location.reload();
+                }, 0);
+            });
+        }
+
+        document.getElementById('startBtn').addEventListener('click', startRecording);
+        document.getElementById('stopBtn').addEventListener('click', stopRecording);
+    </script>
+    <footer>
+        <section class="footerDiv">
+            <div class="foot" style="width: 33.33%;">
+               <b><p style="margin-left: 15%; margin-bottom: 0px; margin-top: 0px; font-size: larger;">Contact Us</p><br>
+                    <ul style="margin-left: 12%; margin-top: -12px; list-style-type: none;" >
+                        <li><i class="fa fa-phone" style="font-size:15px"></i> Phone: <a href="tel:9876543210" style="text-decoration: none;">9876543210</a><br></li>
+                        <li><i class="material-icons" style="font-size:15px; margin-top: 3px;">email</i> Email: <a href="mailto:awspowerednlp@gmail.com" style="text-decoration: none;">awspowerednlp@gmail.com</a></li>
+                    </ul>
+                </b>
+            </div>
+            <div class="foot" style="width: 85%;">
+                <b style="font-size: larger; margin-left: 200px;">AWS-NLP: Making sense of big data, one word at a time.</b>
+                <p style="margin-top: 0px; font-size: large; padding: 10px; text-align: justify;">In every word, a world awaits; in every sentence, a journey unfolds. With AWS, we meticulously transform text into insights, weaving data into the fabric of tomorrow's narratives. Inspired by humanity, powered by innovation, we craft the future, one profound insight at a time.</p>
+            </div>
+        </section>
+        <h3 style="text-align: center; padding: 0px; margin-bottom: -7px;"><b>&copy;2024 All Rights Reserved</b></h3><br>
+    </footer>
+    </html>

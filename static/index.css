@@ -1,0 +1,105 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url('background.jpg');
+    background-size: cover;
+  }
+
+  footer{
+    margin: -10px;
+    width: 101%;
+    margin-top: 3.6%;
+    background-color: whitesmoke;
+  }
+
+  .footerDiv{
+    display: flex;
+  }
+
+.foot{
+    flex-grow: 1;
+    margin-top: 10px;
+    margin-bottom: -2%;
+}
+
+.nav{
+  display: flex;
+  height: 90px;
+  padding: 10px;
+  margin: -10px;
+  width: 99.9%;
+  background-color: whitesmoke;
+}
+
+.navbar{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: 60%;
+}
+
+.navbar-item{
+  padding: 15px;
+  margin: 15px; 
+  font-size: large;
+}
+
+
+.navRef:link, .navRef:visited, .navRef:active {
+  color: black;
+  text-decoration: none;
+}
+
+.navRef:hover{
+  color: black;
+  text-decoration: underline;
+}
+
+.bodyLink:link, .bodyLink:visited, .bodyLink:active {
+  text-decoration: none;
+}
+
+.bodyLink:hover{
+  color: black;
+  text-decoration: underline;
+}
+
+.regSucs{
+  margin-top: 30px;
+  color: black;
+  font-size: 20px;
+  margin-bottom: -3%;
+}
+
+.main{
+    display: flex;
+    margin-top: 60px;
+}
+
+.text{
+    padding: 10px;
+    padding-right: 20px;
+    width: 50%;
+}
+
+.image{
+    flex-grow: 1;
+    padding: 20px;
+    margin-right: 6%;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.innImage {
+    flex-grow: 1;
+}
+
+button{
+    margin-left: 26%;
+    width: 370px;
+    height: 60px;
+    border-radius: 10px;
+}
+

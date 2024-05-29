@@ -1,0 +1,148 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url('background.jpg');
+    background-size: cover;
+  }
+  
+  .mainBox {
+    margin-top: -10px;
+    margin-left: 13%;
+    height: auto;
+    width: 1250px;
+    min-height: 410px;
+    border: 2px outset grey;
+    border-radius: 30px;
+    background-color: whitesmoke;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
+  .box {
+    flex-grow: 1;
+  }
+  
+  .formFields {
+    margin-top: 10px;
+    margin-left: 5%;
+    display: block;
+    text-align: left;
+    padding: 4%;
+    font-size: larger;
+  }
+  
+  input {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
+  input[type='text'],
+  input[type='password']{
+    width: 80%;
+  }
+  
+  button {
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+  }
+  
+  .notMem {
+    font-size: medium;
+    margin-top: 35px;
+    margin-left: 10%;
+  }
+  
+  .logo {
+    margin-left: 375px;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  footer{
+    margin: -10px;
+    width: 101%;
+    margin-top: 93px;
+    background-color: whitesmoke;
+  }
+  
+  .footerDiv{
+    display: flex;
+  }
+
+.foot{
+    flex-grow: 1;
+    margin-top: 10px;
+    margin-bottom: -2%;
+}
+
+.nav{
+  display: flex;
+  height: 90px;
+  padding: 10px;
+  margin: -10px;
+  width: 99.9%;
+  background-color: whitesmoke;
+}
+
+.navbar{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: 5%;
+}
+
+.navbar-item{
+  padding: 15px;
+  padding-right: 0px;
+  margin: 15px; 
+  font-size: large;
+}
+
+.navRef:link, .navRef:visited, .navRef:active {
+  color: black;
+  text-decoration: none;
+}
+
+.navRef:hover{
+  color: black;
+  text-decoration: underline;
+}
+
+.bodyLink:link, .bodyLink:visited, .bodyLink:active {
+  text-decoration: none;
+}
+
+.bodyLink:hover{
+  text-decoration: underline;
+}
+
+.regSucs{
+  margin-top: 30px;
+  color: black;
+  font-size: 20px;
+  margin-bottom: -3%;
+  font-weight: bolder;
+  font-size: 25px;
+  background-color: whitesmoke;
+}
+
+th{
+    width: 120px;
+    text-align: right;
+}
+
+td{
+    text-align: justify;
+    margin-left: 30px;
+    padding: 5px;
+    padding-right: 25px;
+    padding-top: 0px;
+    margin-bottom: 5px;
+}
+
+input[type='date']{
+    margin: 20px;
+    margin-left: -20px;
+}

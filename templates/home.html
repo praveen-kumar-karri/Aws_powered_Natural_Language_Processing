@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=width=1200px, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="icon" href="{{url_for('static',filename='logo.png')}}" type="image/jpg"> 
+    <link rel="stylesheet" href="{{url_for('static',filename='home.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <ul class = "nav">
+        <a href = "{{url_for('home')}}"><img src="{{url_for('static',filename='aws-nlp.png')}}" height="100px" width="375px" style="margin-top: -7px;"></a>
+        <div class="navbar">
+            <li class="navbar-item"><a href="{{url_for('sentiment')}}" class="navRef"><b>Sentiment Analysis</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('textToSpeech')}}" class="navRef"><b>Text-to-Speech</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('speechToText')}}" class="navRef"><b>Speech-to-Text</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('imagetext')}}" class="navRef"><b>Image Text Extraction</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('chatbot')}}" class="navRef"><b>ChatBot</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('history')}}" class="navRef"><b>History</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('about')}}" class="navRef"><b>About Us</b></a></li>
+            <li class="navbar-item"><a href="{{url_for('logout')}}" class="navRef"><b>Logout</b></a></li>
+        </div>
+    </ul>
+    <div>
+        <div class = 'leftbox' style="margin-top: 30px; background-color: #95a1af;">
+            <a href="{{url_for('sentiment')}}"><img src="{{url_for('static',filename='sentiment.png')}}" style="height: 100px; border-radius: 60px;"></a>
+            <h2 style="margin-left: 170px; margin-top: -102px;">Sentiment Analysis</h2>
+            <p style="margin-top: -20px; margin-left: 170px; padding-right: 20px; text-align: justify;">Utilizing Amazon Comprehend for precise sentiment analysis, identifying text positivity, negativity, or neutrality. With advanced machine learning, gaining insights into public opinion, customer feedback, and market sentiment, empowering smarter decision-making and enhanced customer experiences on our web application.</p>
+        </div>
+        <div class = 'rightbox' style="background-color: #67ada9;">
+            <a href="{{url_for('textToSpeech')}}"><img src="{{url_for('static',filename='text-to-speech.png')}}" style="height: 100px; border-radius: 60px; margin-left: 825px; "></a>
+            <h2 style="margin-left: 30px; margin-top: -97px; width: 800px;">Text-to-Speech</h2>
+            <p style="text-align: justify; margin-top: -20px; width: 780px; margin-left: 30px;">Integrating Amazon Polly into our web application for dynamic text-to-speech conversion. Elevating user experience by transforming written content into lifelike speech, fostering accessibility and engagement across our platform.</p>
+        </div>
+        <div class = 'leftbox' style="background-color: #a0b6c4;">
+            <a href="{{url_for('speechToText')}}"><img src="{{url_for('static',filename='speech-to-text.jpg')}}" style="height: 100px; border-radius: 60px;"></a>
+            <h2 style="margin-left: 190px; margin-top: -102px;">Speech-to-Text</h2>
+            <p style="margin-top: -20px; margin-left: 190px; padding-right: 20px; text-align: justify;">Leveraging Amazon Transcribe to seamlessly convert speech to text within our web application. Enhancing accessibility and user interaction by transforming spoken content into accurate written text, facilitating efficient communication and engagement across our platform.</p>
+        </div>
+        <div class = 'rightbox' style="background-color: #6c7c44;">
+            <a href="{{url_for('imagetext')}}"><img src="{{url_for('static',filename='image-text-extractor.png')}}" style="height: 100px; border-radius: 60px; margin-left: 900px; "></a>
+            <h2 style="margin-left: 30px; margin-top: -98px; width: 800px;">Sentiment Analysis on Image Text</h2>
+            <p style="text-align: justify; margin-top: -20px; width: 850px; margin-left: 30px;">Employing Amazon Rekognition for efficient text extraction from images, seamlessly integrated with sentiment analysis using Amazon Comprehend. Enhancing our web application by extracting textual content from images and analyzing sentiment, empowering users with valuable insights and facilitating informed decision-making.</p>
+        </div>
+        <div class = 'leftbox' style="background-color: #44a49c;">
+            <a href="{{url_for('chatbot')}}"><img src="{{url_for('static',filename='chatbot.jpg')}}" style="height: 100px; border-radius: 60px;"></a>
+            <h2 style="margin-left: 170px; margin-top: -102px;">ChatBot</h2>
+            <p style="margin-top: -20px; margin-left: 170px; padding-right: 20px; text-align: justify;">Incorporating OpenAI to seamlessly integrate a chatbot into our web application. Enhancing user experience with natural language processing, facilitating engaging conversations. Empowering our platform with intelligent automation, enabling users to access information and interact intuitively.</p>
+        </div>
+    </div>
+</body>
+<footer>
+    <section class="footerDiv">
+        <div class="foot" style="width: 33.33%;">
+           <b><p style="margin-left: 15%; margin-bottom: 0px; margin-top: 0px; font-size: larger;">Contact Us</p><br>
+                <ul style="margin-left: 12%; margin-top: -12px; list-style-type: none;" >
+                    <li><i class="fa fa-phone" style="font-size:15px"></i> Phone: <a href="tel:9876543210" style="text-decoration: none;">9876543210</a><br></li>
+                    <li><i class="material-icons" style="font-size:15px; margin-top: 3px;">email</i> Email: <a href="mailto:awspowerednlp@gmail.com" style="text-decoration: none;">awspowerednlp@gmail.com</a></li>
+                </ul>
+            </b>
+        </div>
+        <div class="foot" style="width: 85%;">
+            <b style="font-size: larger; margin-left: 200px;">AWS-NLP: Making sense of big data, one word at a time.</b>
+            <p style="margin-top: 0px; font-size: large; padding: 10px; text-align: justify;">In every word, a world awaits; in every sentence, a journey unfolds. With AWS, we meticulously transform text into insights, weaving data into the fabric of tomorrow's narratives. Inspired by humanity, powered by innovation, we craft the future, one profound insight at a time.</p>
+        </div>
+    </section>
+    <h3 style="text-align: center; padding: 0px; margin-bottom: -7px;"><b>&copy;2024 All Rights Reserved</b></h3><br>
+</footer>
+</html>
